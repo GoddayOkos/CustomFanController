@@ -21,7 +21,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <dev.decagon.godday.customfancontroller.DialView
         android:id="@+id/dialView"
         android:layout_width="@dimen/image_width"
         android:layout_height="@dimen/image_width"
