@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.StringRes
 import androidx.core.content.withStyledAttributes
+import dev.decagon.godday.customfancontroller.FanSpeed.*
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -33,7 +34,7 @@ class DialView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     private var radius = 0.0f               // Radius of the circle
-    private var fanSpeed = FanSpeed.OFF     // The active selection
+    private var fanSpeed = OFF     // The active selection
     // Position variable which will be used to draw label and
     // indicator circle position
     private val pointPosition: PointF = PointF(0.0f, 0.0f)
@@ -84,7 +85,12 @@ class DialView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         // Set dial background color to green if selection not off
-        paint.color = if (fanSpeed == FanSpeed.OFF) Color.GRAY else Color.GREEN
+        paint.color = when (fanSpeed) {
+            OFF -> Color.GRAY
+            LOW -> fanSpeedLowColor
+            MEDIUM -> fanSpeedMediumColor
+            HIGH -> fanSpeedMaxColor
+        }
 
         // Draw the dial
         canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(),
@@ -99,7 +105,7 @@ class DialView @JvmOverloads constructor(
 
         // Draw the text label
         val labelRadius = radius + RADIUS_OFFSET_LABEL
-        for (i in FanSpeed.values()) {
+        for (i in values()) {
             pointPosition.computeXYForSpeed(i, labelRadius)
             val label = resources.getString(i.label)
             canvas.drawText(label, pointPosition.x, pointPosition.y, paint)
