@@ -11,26 +11,26 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Display3"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:padding="16dp"
+        android:padding="@dimen/padding"
         android:textColor="@android:color/black"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="24dp"
-        android:text="Fan Control"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:layout_marginTop="@dimen/big_margin"
+        android:text="@string/fan_control"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/dialView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="@dimen/image_width"
+        android:layout_height="@dimen/image_width"
         android:background="@android:color/darker_gray"
         app:layout_constraintTop_toBottomOf="@id/customViewLabel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp" />
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
